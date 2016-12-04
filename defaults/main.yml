@@ -1,0 +1,5 @@
+---
+geoserver:
+  version: 
+    major: 2
+    minor: 10
