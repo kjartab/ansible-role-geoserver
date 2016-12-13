@@ -1,31 +1,32 @@
 ---
+
 - name: Look for geoserver.war file in Tomcat's webapps folder
-  stat: path={{tomcat_webapps_directory}}/geoserver.war
+  stat: path={{tomcat.webapps_directory}}/geoserver.war
   register: res
 
 - name: Download geoserver and put in folder - if it is not already there
-  unarchive: src="{{geoserver_download_url}}" dest={{tomcat_webapps_directory}} copy=no
+  include: download.yaml
   when: res.stat.exists == False
 
-- name: Wait for user.xml to exist
-  wait_for: path="{{tomcat_webapps_directory}}/geoserver/data/security/usergroup/default/users.xml" state=present
+# - name: Wait for user.xml to exist
+#   wait_for: path="{{tomcat_webapps_directory}}/geoserver/data/security/usergroup/default/users.xml" state=present
 
-- name: Look for geoserver.war file in Tomcat's webapps folder
-  stat: path={{tomcat_webapps_directory}}/geoserver/WEB-INF/lib/
-  register: res
+# - name: Look for geoserver.war file in Tomcat's webapps folder
+#   stat: path={{tomcat_webapps_directory}}/geoserver/WEB-INF/lib/
+#   register: res
 
-- name: Retrieve extension if not present
-  get_url: url={{geoserver_vectortiles_extension_url}} dest=/opt
+# - name: Retrieve extension if not present
+#   get_url: url={{geoserver_vectortiles_extension_url}} dest=/opt
 
-- name: unarchive plugin if not present
-  unarchive: src=/opt/{{vectortiles_extension_file}} dest={{tomcat_webapps_directory}}/geoserver/WEB-INF/lib/
+# - name: unarchive plugin if not present
+#   unarchive: src=/opt/{{vectortiles_extension_file}} dest={{tomcat_webapps_directory}}/geoserver/WEB-INF/lib/
 
-- name: start Tomcat
-  service: name=tomcat8 state=restarted enabled=yes
+# - name: start Tomcat
+#   service: name=tomcat8 state=restarted enabled=yes
 
-- name: Wait until geoserver is available
-  shell: curl --head --silent {{geoserver_url}}/web/
-  register: result
-  until: result.stdout.find("200 OK") != -1
-  retries: 20
-  delay: 5
+# - name: Wait until geoserver is available
+#   shell: curl --head --silent {{geoserver_url}}/web/
+#   register: result
+#   until: result.stdout.find("200 OK") != -1
+#   retries: 20
+#   delay: 5

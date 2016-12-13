@@ -3,3 +3,8 @@ geoserver:
   version: 
     major: 2
     minor: 10
+    
+tomcat: 
+  enable_cors: True
+  webapps_directory: /var/www/tomcat/webapps
+  
