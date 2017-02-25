@@ -3,8 +3,11 @@ geoserver:
   version: 
     major: 2
     minor: 10
+    patch: 2
+
+geoserver_version: "geoserver-{{geoserver.version.major}}.{{geoserver.version.minor}}.{{geoserver.version.patch}}"
     
 tomcat: 
   enable_cors: True
-  webapps_directory: /var/www/tomcat/webapps
+  webapps_directory: /var/lib/tomcat7/webapps
   

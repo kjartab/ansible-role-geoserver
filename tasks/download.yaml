@@ -1,12 +1,5 @@
 ---
-- name: 
-  command: date +%s
-  register: result
-
-- debug: var=result
-
-- name: Download geoserver war
-  get_url: src=https://sourceforge.net/projects/geoserver/files/GeoServer/{{geoserver.version.major}}.{{geoserver.version.minor}}.0/geoserver-{{geoserver.version.major}}.{{geoserver.version.minor}}.0-war.zip/download dest={{tomcat.webapps_directory}}
-  register: site # unarchive: src="http://downloads.sourceforge.net/project/geoserver/GeoServer/{{geoserver.version.major}}.{{geoserver.version.minor}}.0/geoserver-{{geoserver.version.major}}.{{geoserver.version.minor}}.0-war.zip/download?r=&ts={{result.stdout}}&use_mirror=heanet" dest={{tomcat.webapps_directory}} remote=yes
-
-- debug: var=site
+- unarchive:
+    src: https://www.kartan.no/{{geoserver_version}}-war.zip
+    dest: "{{tomcat.webapps_directory}}"
+    remote_src: yes
