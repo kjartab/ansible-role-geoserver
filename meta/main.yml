@@ -16,5 +16,4 @@ galaxy_info:
   galaxy_tags: [ geoserver ]
 
 dependencies: 
-  # - kjartab.tomcat
-  - ansible-role-tomcat
+  - kjartab.tomcat
