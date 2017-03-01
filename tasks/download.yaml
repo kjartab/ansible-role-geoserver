@@ -1,4 +1,4 @@
----
+--- 
 - unarchive:
     src: https://www.kartan.no/{{geoserver_version}}-war.zip
     dest: "{{tomcat.webapps_directory}}"
