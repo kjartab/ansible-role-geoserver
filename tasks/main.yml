@@ -6,8 +6,9 @@
 
 - name: Download geoserver and put in folder - if it is not already there
   include: download.yaml geoserver_version_name={{geoserver_version}}
-  # when: res.stat.exists == False
+  when: res.stat.exists == False
 
+- include: plugins.yml
 # - name: Wait for user.xml to exist
 #   wait_for: path="{{tomcat_webapps_directory}}/geoserver/data/security/usergroup/default/users.xml" state=present
 

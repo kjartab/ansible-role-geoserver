@@ -15,5 +15,5 @@ galaxy_info:
 
   galaxy_tags: [ geoserver ]
 
-dependencies: 
-  - kjartab.tomcat
+# dependencies: 
+#   - kjartab.tomcat

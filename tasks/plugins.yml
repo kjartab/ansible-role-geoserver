@@ -1,0 +1,2 @@
+---
+- unarchive: src=http://ares.boundlessgeo.com/geoserver/master/ext-latest/geoserver-2.11-SNAPSHOT-vectortiles-plugin.zip dest=/var/lib/tomcat7/webapps/geoserver/WEB-INF/ remote_src=yes
